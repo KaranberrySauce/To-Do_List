@@ -12,8 +12,8 @@ function addTask() {
     span.innerHTML = "\u00d7";
     li.appendChild(span);
   }
-
   inputBox.value = "";
+  saveData();
 }
 
 listContainer.addEventListener(
@@ -27,3 +27,12 @@ listContainer.addEventListener(
   },
   false
 );
+
+function saveData() {
+  localStorage.setItem("data", listContainer.innerHTML);
+}
+
+function showTask() {
+  listContainer.innerHTML = localStorage.getItem("data");
+}
+showTask();
